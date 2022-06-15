@@ -1,0 +1,49 @@
+{
+  "description": "Este plugin foi desenvolvido para copiar os dados do comprador da plataforma de ecommerce wbuy e colar dentro do aliexpress.",
+  "manifest_version": 3,
+  "name": "Wbuy and Aliexpress copy data",
+  "version": "1.0",
+  "homepage_url": "https://github.com/tsalesproductions/wbuy-buyer-data-copy",
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab",
+    "clipboardRead",
+    "clipboardWrite",
+    "commands"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": ["https://*.aliexpress.com/*", "https://*.sistemawbuy.com.br/*"],
+      "js": ["borderify.js"]
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup.html"
+  },
+
+  "host_permissions": [
+    "https://*.aliexpress.com/*", 
+    "https://*.sistemawbuy.com.br/*"
+  ],
+
+  "commands": {
+    "flip-tabs-forward": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Right",
+        "mac": "Command+Shift+Right"
+      },
+      "description": "Flip tabs forward"
+    }
+  }
+}
